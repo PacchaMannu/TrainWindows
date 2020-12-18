@@ -1,4 +1,6 @@
-def Sum(a,b):
-    return a+b
-ans=Sum(2,3)
-print(ans)
+import collections
+q=collections.deque(['hello','my','name'])
+q.append('is')
+q.pop()
+q.popleft()
+print(q)
