@@ -4,22 +4,23 @@ from datetime import datetime
 import json
 from os import system, name
 
-con=mysql.connector.connect(user='devganesh',                     #Send Query
-    password='stilldev',
-    host=E.host,
-    port=3306,
-    database='devsample')
+# Establishing Connection To MySql Server
+con=mysql.connector.connect(user='devganesh',    
+        password='stilldev',
+        host=E.host,
+        port=3306,
+        database='devsample')
 curs=con.cursor(dictionary=True)
 
 def clear():
-    """Clearing the screen"""
+    """Clearing The Screen"""
     if name == 'nt': 
         _ = system('cls')
     else: 
         _ = system('clear')
 
 def outSql(print_table, userId):
-    """printing Output from SQL"""
+    """Printing Output From Sql"""
     ID = {
         'userId': userId
     }
@@ -29,7 +30,7 @@ def outSql(print_table, userId):
     print(jres)
 
 def addStu():
-    """Insert Student Data into STUDENT"""
+    """Insert Student Data Into STUDENT"""
     stuId = input("Enter Student ID: ")
     stuName = input("Enter Student name: ")
     stuDept = input("Enter Student department: ")
@@ -46,7 +47,7 @@ def addStu():
     con.commit()
 
 def addEmp():
-    """Insert Company Data into COMPANY"""
+    """Insert Company Data Into COMPANY"""
     comId = input("Enter Company ID: ")
     comName = input("Enter Company name: ")
     comLocation = input("Enter Company location: ")
@@ -71,7 +72,7 @@ def addEmp():
     con.commit()
 
 def addPlace():
-    """Insert Placement Data into PLACEMENTS"""
+    """Insert Placement Data Into PLACEMENTS"""
     stuId = input("Enter Student ID: ")
     comId = input("Enter Company ID: ")
     Pack = input("Enter Package: ")
@@ -86,19 +87,19 @@ def addPlace():
     con.commit()
 
 def outStu():
-    """Get Student Data using ID"""
+    """Get Student Data Using ID"""
     userId = input("Enter Student ID: ")
     print_table = ("SELECT * FROM STUDENT WHERE ID=%(userId)s")
     outSql(print_table, userId)
 
 def outCom():
-    """Get Company Data using ID"""
+    """Get Company Data Using ID"""
     userId = input("Enter Company ID: ")
     print_table = ("SELECT * FROM COMPANY WHERE ID=%(userId)s")
     outSql(print_table, userId)
 
 def outDept():
-    """Get Students in Specified Department"""
+    """Get Students In Specified Department"""
     userId = input("Enter Department: ")
     print_table = ("SELECT * FROM STUDENT WHERE DEPT=%(userId)s")
     outSql(print_table, userId)
